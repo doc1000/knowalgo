@@ -1,38 +1,58 @@
+'use client';
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { logEvent } from "@/lib/errorTracking";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0B1E3B] text-[#DDE2E7]">
+      {/* Skip to main content link for screen readers */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#D35400] focus:text-white focus:rounded-md"
+      >
+        Skip to main content
+      </a>
+      
       {/* Hero Section */}
-      <section className="px-6 py-16 md:py-24">
+      <section className="px-6 py-16 md:py-24" aria-label="Hero section">
         <h1 className="text-4xl md:text-5xl font-normal tracking-wide mb-4 text-white">
           Unlock AI.<br />
           Dominate Your Data.
         </h1>
-        <p className="text-lg md:text-xl text-[#DDE2E7] max-w-2xl mb-8">
+        <p className="text-lg md:text-xl text-[#DDE2E7] max-w-xl mb-8">
           Build custom, local-first AI search and research systems for yourself or your team.
         </p>
-        <Button className="bg-[#D35400] text-white hover:bg-orange-700 px-8 py-6 text-base font-semibold">
+        <Button 
+          className="bg-[#D35400] text-white hover:bg-orange-700 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-[#0B1E3B] px-8 py-6 text-base font-semibold"
+          onClick={() => {
+            logEvent('button_click', { button_name: 'get_in_touch' });
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          aria-label="Get in touch - scroll to contact section"
+        >
           GET IN TOUCH
         </Button>
       </section>
 
       {/* Services Section - Two Column with Logo */}
-      <section className="bg-[#11243F] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl">
+      <section id="main-content" className="bg-[#11243F] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl" aria-labelledby="services-heading">
         <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 max-w-6xl mx-auto">
           <div className="flex-shrink-0 md:w-48">
             <Image 
-              src="/logo_square.png" 
-              alt="Maze Logo" 
+              src="/logo_square.webp" 
+              alt="Knowledge Algorithms logo - a square logo representing AI and knowledge systems" 
               width={128}
               height={128}
               className="w-24 h-24 md:w-32 md:h-32 mx-auto md:mx-0"
+              loading="lazy"
+              quality={90}
             />
           </div>
           <div className="flex-1">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#D35400] mb-6">What I Do</h2>
+            <h2 id="services-heading" className="text-2xl md:text-3xl font-extrabold text-[#D35400] mb-6">What I Do</h2>
             <div className="grid md:grid-cols-2 gap-4 md:gap-6">
               <div>
                 <h3 className="text-white font-bold mb-1">AI Search & RAG Systems</h3>
@@ -84,15 +104,17 @@ export default function HomePage() {
       </section>
 
       {/* VaultBubble Section */}
-      <section className="bg-[#1A2D4B] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl">
+      <section className="bg-[#1A2D4B] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl" aria-labelledby="vaultbubble-heading">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <Image 
-              src="/vaultbubbles-icon-48.png" 
+              src="/vaultbubbles-icon-48.webp" 
               alt="VaultBubble Logo" 
               width={48}
               height={48}
               className="w-12 h-12"
+              loading="lazy"
+              quality={90}
             />
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#D35400]">VaultBubble</h2>
           </div>
@@ -101,25 +123,61 @@ export default function HomePage() {
           </p>
           <div className="mb-6">
             <Image 
-              src="/VB_screenshot.png" 
-              alt="VaultBubble Screenshot" 
+              src="/VB_screenshot.webp" 
+              alt="Screenshot of VaultBubble interface showing an interactive bubble chart visualization of knowledge topics, with search functionality and document organization features" 
               width={1200}
               height={800}
               className="w-full rounded-lg"
+              loading="lazy"
+              quality={85}
             />
           </div>
-          <Button className="bg-[#D35400] text-white hover:bg-orange-700">READ MORE &gt;</Button>
+          <Button 
+            className="bg-[#D35400] text-white hover:bg-orange-700 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-[#1A2D4B]"
+            onClick={() => {
+              logEvent('button_click', { button_name: 'read_more_vaultbubble', destination: 'github' });
+              window.open('https://github.com/doc1000/text_analyzer', '_blank');
+            }}
+            aria-label="Read more about VaultBubble on GitHub (opens in new tab)"
+          >
+            READ MORE &gt;
+          </Button>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="text-center px-6 py-12 mb-8">
-        <h2 className="text-xl md:text-2xl font-bold text-white mb-4">Contact</h2>
+      <section id="contact" className="text-center px-6 py-12 mb-8" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" className="text-xl md:text-2xl font-bold text-white mb-4">Contact</h2>
         <p className="text-[#DDE2E7] mb-6">Need AI knowledge tools now? <span className="text-white font-bold">Reach out</span>:</p>
-        <div className="space-y-2 text-base md:text-lg text-[#DDE2E7]">
-          <p>[ YOUR EMAIL HERE ]</p>
-          <p>[ YOUR TWITTER HERE ]</p>
-          <p>[ YOUR GITHUB HERE ]</p>
+        <div className="space-y-2 text-base md:text-lg text-[#DDE2E7]" role="list">
+          <a 
+            href="mailto:info@knowledgealgorithms.com" 
+            className="hover:text-[#D35400] focus:text-[#D35400] focus:outline-none focus:ring-2 focus:ring-[#D35400] focus:ring-offset-2 focus:ring-offset-[#0B1E3B] transition-colors block"
+            aria-label="Send email to info@knowledgealgorithms.com"
+            onClick={() => logEvent('link_click', { link_type: 'email' })}
+          >
+            info@knowledgealgorithms.com
+          </a>
+          <a 
+            href="https://github.com/doc1000" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[#D35400] focus:text-[#D35400] focus:outline-none focus:ring-2 focus:ring-[#D35400] focus:ring-offset-2 focus:ring-offset-[#0B1E3B] transition-colors block"
+            aria-label="Visit GitHub profile (opens in new tab)"
+            onClick={() => logEvent('link_click', { link_type: 'github' })}
+          >
+            https://github.com/doc1000
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/dosteresh/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[#D35400] focus:text-[#D35400] focus:outline-none focus:ring-2 focus:ring-[#D35400] focus:ring-offset-2 focus:ring-offset-[#0B1E3B] transition-colors block"
+            aria-label="Visit LinkedIn profile (opens in new tab)"
+            onClick={() => logEvent('link_click', { link_type: 'linkedin' })}
+          >
+            https://www.linkedin.com/in/dosteresh/
+          </a>
         </div>
       </section>
 
