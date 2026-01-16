@@ -100,6 +100,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* What I REALLY Do - Graffiti style, rebellious tone */}
+      <section 
+        className="bg-gradient-to-br from-orange-900 via-black to-blue-900 border-4 border-[#D35400] rounded-xl p-8 md:p-12 mx-6 mb-12 shadow-2xl font-mono text-[#F1F1F1]"
+        aria-labelledby="really-do-heading"
+      >
+        <h2 id="really-do-heading" className="text-2xl md:text-3xl font-extrabold text-[#FF6B00] mb-8 uppercase tracking-widest">
+          What I really do: un-screw your data flow
+        </h2>
+        
+        <ul className="space-y-5 text-base md:text-lg">
+          <li>
+            <span className="text-[#FF6B00] font-bold">Do you have multiple databases, document stores, and data silos that don't talk to each other?</span><br />
+            <span className="text-[#F1F1F1]">➤ Break the silos. Funnel into a single searchable source — more insight, less noise.</span>
+          </li>
+          <li>
+            <span className="text-[#FF6B00] font-bold">Is your internal image search broken (or non-existent)?</span><br />
+            <span className="text-[#F1F1F1]">➤ Build custom image embeddings trained on your descriptions. Stop scrolling, start finding.</span>
+          </li>
+          <li>
+            <span className="text-[#FF6B00] font-bold">Tired of hunting through folders? Want to "JUST ASK" a question and get the right doc?</span><br />
+            <span className="text-[#F1F1F1]">➤ Talk to your knowledge. Ask questions. Get instant RAG-powered answers from your local server.</span>
+          </li>
+          <li>
+            <span className="text-[#FF6B00] font-bold">No big picture view of your content?</span><br />
+            <span className="text-[#F1F1F1]">➤ Map it. Visualize dynamic topics across time, space, and source.</span>
+          </li>
+          <li>
+            <span className="text-[#FF6B00] font-bold">Need to know what changed TODAY in your data?</span><br />
+            <span className="text-[#F1F1F1]">➤ Deploy multi-factor drift detection. Spot risks. Seize opportunities before anyone else does.</span>
+          </li>
+        </ul>
+      </section>
+
       {/* About Me - Two Column */}
       <section className="bg-[#1A2D4B] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl">
         <h2 className="text-2xl md:text-3xl font-extrabold text-[#D35400] mb-6">About Me</h2>
