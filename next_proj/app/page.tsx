@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { logEvent } from "@/lib/errorTracking";
@@ -182,8 +183,25 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-700 pt-6 pb-8 px-6 text-center text-xs md:text-sm text-gray-400 max-w-4xl mx-auto">
-      Building with AI.  Driven by Humans.
+      <footer className="border-t border-gray-700 pt-6 pb-8 px-6 text-center max-w-4xl mx-auto">
+        <p className="text-xs md:text-sm text-gray-400 mb-4">
+          Building with AI. Driven by Humans.
+        </p>
+        <div className="flex justify-center gap-4 text-xs text-gray-500">
+          <Link 
+            href="/privacy" 
+            className="hover:text-[#D35400] transition-colors"
+          >
+            Privacy Policy
+          </Link>
+          <span>|</span>
+          <Link 
+            href="/terms" 
+            className="hover:text-[#D35400] transition-colors"
+          >
+            Terms of Service
+          </Link>
+        </div>
       </footer>
     </div>
   );
