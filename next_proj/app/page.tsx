@@ -114,9 +114,10 @@ export default function HomePage() {
         className="bg-gradient-to-br from-orange-900 via-black to-blue-900 border-4 border-[#D35400] rounded-xl p-8 md:p-12 mx-6 mb-12 shadow-2xl font-mono text-[#F1F1F1]"
         aria-labelledby="really-do-heading"
       >
-        <h2 id="really-do-heading" className="text-2xl md:text-3xl font-extrabold text-[#FF6B00] mb-8 uppercase tracking-widest">
-          What I really do: un-screw your data flow
+        <h2 id="really-do-heading" className="text-2xl md:text-3xl font-extrabold text-[#FF6B00] mb-2 uppercase tracking-widest">
+          Does your data need to be un-screwed?
         </h2>
+        <p className="text-xl md:text-2xl text-[#F1F1F1] mb-8">(Yes. Yes it does.)</p>
         
         <ul className="space-y-5 text-base md:text-lg">
           <li>
