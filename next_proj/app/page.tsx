@@ -57,17 +57,6 @@ export default function HomePage() {
       {/* Services Section - Two Column with Logo */}
       <section id="main-content" className="bg-[#11243F] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl" aria-labelledby="services-heading">
         <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 max-w-6xl mx-auto">
-          <div className="flex-shrink-0 md:w-48">
-            <Image 
-              src="/logo_square.webp" 
-              alt="Knowledge Algorithms logo - a square logo representing AI and knowledge systems" 
-              width={128}
-              height={128}
-              className="w-24 h-24 md:w-32 md:h-32 mx-auto md:mx-0"
-              loading="lazy"
-              quality={90}
-            />
-          </div>
           <div className="flex-1">
             <h2 id="services-heading" className="text-2xl md:text-3xl font-extrabold text-[#D35400] mb-6">What I Do</h2>
             <div className="grid md:grid-cols-2 gap-4 md:gap-6">
@@ -96,6 +85,26 @@ export default function HomePage() {
                 <p className="text-[#DDE2E7] text-sm md:text-base">Own your data. Systems that work even when offline.</p>
               </div>
             </div>
+          </div>
+          <div className="flex-shrink-0 md:w-48 order-first md:order-last flex flex-col items-center gap-4">
+            <Image 
+              src="/logo_square.webp" 
+              alt="Knowledge Algorithms logo - square version" 
+              width={128}
+              height={128}
+              className="w-20 h-20 md:w-28 md:h-28"
+              loading="lazy"
+              quality={90}
+            />
+            <Image 
+              src="/logo_round.webp" 
+              alt="Knowledge Algorithms logo - round version" 
+              width={128}
+              height={128}
+              className="w-24 h-24 md:w-32 md:h-32 rounded-full"
+              loading="lazy"
+              quality={90}
+            />
           </div>
         </div>
       </section>
@@ -157,6 +166,9 @@ export default function HomePage() {
       <section className="bg-[#1A2D4B] rounded-2xl p-8 md:p-12 mx-6 mb-12 shadow-xl" aria-labelledby="vaultbubble-heading">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#D35400]">
+              <span className="text-white font-normal">Example:</span> VaultBubble
+            </h2>
             <Image 
               src="/vaultbubbles-icon-48.webp" 
               alt="VaultBubble Logo" 
@@ -166,7 +178,6 @@ export default function HomePage() {
               loading="lazy"
               quality={90}
             />
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#D35400]">VaultBubble</h2>
           </div>
           <p className="text-base md:text-lg mb-6">
             A Chrome extension and local AI system to build your personal research vault. Save URLs, text, and notes as you browse. VaultBubble automatically organizes everything into topics and visualizes your knowledge in an interactive bubble chart. Ask questions about your captured documents using natural language search. Everything stays private on your computer.
@@ -192,6 +203,48 @@ export default function HomePage() {
           >
             READ MORE &gt;
           </Button>
+        </div>
+      </section>
+
+      {/* Articles & Insights Section */}
+      <section className="px-6 mb-12" aria-labelledby="articles-heading">
+        <div className="max-w-5xl mx-auto">
+          <h2 id="articles-heading" className="text-2xl md:text-3xl font-extrabold text-[#D35400] mb-6">Articles & Insights</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* TDS Article */}
+            <a 
+              href="https://towardsdatascience.com/pairwise-cross-variance-classification/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#11243F] rounded-lg p-6 border-2 border-transparent hover:border-[#D35400] transition-all duration-200 group"
+              onClick={() => logEvent('article_click', { article: 'pairwise_classification_tds' })}
+            >
+              <p className="text-xs text-[#D35400] uppercase tracking-wide mb-2">Towards Data Science</p>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#D35400] transition-colors">
+                Pairwise Cross-Variance Classification
+              </h3>
+              <p className="text-sm text-[#DDE2E7]">
+                Multi-class zero-shot embedding classification using a novel dimensionality reduction technique. Improved text/image agreement from 61% to 89%.
+              </p>
+            </a>
+
+            {/* Divariance Paper */}
+            <a 
+              href="/divariance-paper.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#11243F] rounded-lg p-6 border-2 border-transparent hover:border-[#D35400] transition-all duration-200 group"
+              onClick={() => logEvent('article_click', { article: 'divariance_paper' })}
+            >
+              <p className="text-xs text-[#D35400] uppercase tracking-wide mb-2">Research Paper</p>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#D35400] transition-colors">
+                Divariance: Connecting Fréchet and KL Divergence
+              </h3>
+              <p className="text-sm text-[#DDE2E7]">
+                A novel metric connecting distributional difference measures for improved feature selection in embedding classification.
+              </p>
+            </a>
+          </div>
         </div>
       </section>
 
