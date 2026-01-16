@@ -29,6 +29,11 @@ const imageConfigs = {
     quality: 90,
     createWebP: true,
   },
+  'chaos_clarity_map_no_text.png': {
+    width: 800,
+    quality: 80,
+    createWebP: true,
+  },
 };
 
 async function optimizeImage(filename, config) {

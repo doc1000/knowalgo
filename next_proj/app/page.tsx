@@ -18,24 +18,40 @@ export default function HomePage() {
       </a>
       
       {/* Hero Section */}
-      <section className="px-6 py-16 md:py-24" aria-label="Hero section">
-        <h1 className="text-4xl md:text-5xl font-normal tracking-wide mb-4 text-white">
-          Unlock AI.<br />
-          Dominate Your Data.
-        </h1>
-        <p className="text-lg md:text-xl text-[#DDE2E7] max-w-xl mb-8">
-          Build custom, local-first AI search and research systems for yourself or your team.
-        </p>
-        <Button 
-          className="bg-[#D35400] text-white hover:bg-orange-700 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-[#0B1E3B] px-8 py-6 text-base font-semibold"
-          onClick={() => {
-            logEvent('button_click', { button_name: 'get_in_touch' });
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      <section 
+        className="relative px-6 py-16 md:py-24 overflow-hidden"
+        aria-label="Hero section"
+      >
+        {/* Background image - full width on desktop */}
+        <div 
+          className="absolute inset-0 bg-no-repeat bg-center opacity-30 pointer-events-none"
+          style={{ 
+            backgroundImage: 'url(/chaos_clarity_map_no_text.webp)',
+            backgroundSize: '100% auto',
           }}
-          aria-label="Get in touch - scroll to contact section"
-        >
-          GET IN TOUCH
-        </Button>
+          aria-hidden="true"
+        />
+        
+        {/* Content - aligned with sections below */}
+        <div className="relative z-10 max-w-6xl mx-auto pl-0 md:pl-48">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-wide mb-4 text-white">
+            Unlock AI.<br />
+            Dominate Your Data.
+          </h1>
+          <p className="text-lg md:text-xl text-[#DDE2E7] max-w-xl mb-8">
+            Build custom, local-first AI search and research systems for yourself or your team.
+          </p>
+          <Button 
+            className="bg-[#D35400] text-white hover:bg-orange-700 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-[#0B1E3B] px-8 py-6 text-base font-semibold"
+            onClick={() => {
+              logEvent('button_click', { button_name: 'get_in_touch' });
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label="Get in touch - scroll to contact section"
+          >
+            GET IN TOUCH
+          </Button>
+        </div>
       </section>
 
       {/* Services Section - Two Column with Logo */}
