@@ -1,0 +1,54 @@
+# Security headers for knowledgealgorithms.com
+# Deployed to Cloudflare Pages
+
+/*
+  # Force HTTPS for 1 year, include subdomains, allow preload list
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # Prevent clickjacking - don't allow site to be embedded in frames
+  X-Frame-Options: DENY
+  
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Control referrer information sent to other sites
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Disable unnecessary browser features
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  
+  # Content Security Policy - controls what resources can load
+  # Configured for: Next.js static site + Google Analytics
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  
+  # Prevent XSS attacks in older browsers
+  X-XSS-Protection: 1; mode=block
+
+# Cache static assets for 1 year
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages - cache briefly, revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
